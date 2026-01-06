@@ -1,5 +1,5 @@
 # RV32I RISC-V Single Cycle Processor
-This repository and personal project is a light-weight, single-cycle RISC-V processor implementing the RV32I Base Integer Instruction Set. This project was developed primarily for educational purposes to explore and implement digital design, computer architecture, RTL development, and hardware synthesis.
+This repository is a light-weight, single-cycle RISC-V processor implementing the RV32I Base Integer Instruction Set. This project was developed primarily for educational purposes to explore and implement digital design, computer architecture, RTL development, and hardware synthesis.
 ## Overview
 - **ISA**: RISC-V RV32I (Base Integer)
 - **Language**: SystemVerilog
