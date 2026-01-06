@@ -117,7 +117,7 @@ The design was synthesized and analyzed using a Multi-Corner flow with the **Nan
 
 Report summary:
 
-| Analysis View | TNS (ns) | Critical Path Slack (ns) | Cell Area (µm²) | Leaf Instance Count |
+| Analysis View | TNS (ps) | Critical Path Slack (ps) | Cell Area (µm²) | Leaf Instance Count |
 | ------------- | -------- | ------------------------ | --------------- | ------------------- |
 | Slow Corner   | 0.0      | 2.1                      | 99229.704       | 58738               |
 | Fast Corner   | 0.0      | 8365.4                   | 99229.704       | 58738               |
