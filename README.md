@@ -25,7 +25,7 @@ This repository is a light-weight, single-cycle RISC-V processor implementing th
 └── README.md
 ```
 ## RV32I Single-Cycle Processor
-![RV32I](./doc/rv32i_block_diagram.jpg)
+![RV32I](./doc/rv32i_block_diagram.svg)
 The processor implements a **Harvard Architecture** with dedicated buses for instruction and data memory. The diagram shows that the design follows the typical RISC-V stages pipeline (Fetch, Decode, Execute, Memory, Writeback). All operations are completed within a single clock period ($CPI = 1$).
 ### Design Methodology
 - **Modular**: The core is partitioned into distinct functional units (ALU, Control Unit, Register File, etc) to ensure clean RTL and easier debugging.
