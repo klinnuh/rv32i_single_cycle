@@ -1,0 +1,19 @@
+
+# Design
+../rtl/dut_pkg.sv
+../rtl/alu_b.sv
+../rtl/control_unit_b.sv
+../rtl/data_mem_b.sv
+../rtl/decode_b.sv
+../rtl/rv32i_core.sv
+../rtl/dut_pkg.sv
+../rtl/fetch_b.sv
+../rtl/mux2.sv
+../rtl/mux4.sv
+../rtl/pc_adder_b.sv
+../rtl/pc_b.sv
+../rtl/reg_file_b.sv
+
+# TB
+#../tb/tb_pkg.sv
+../tb/top.sv
