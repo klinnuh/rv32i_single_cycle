@@ -110,19 +110,26 @@ The entire RTL design is fully synthesizable. A sample constraint file (SDC file
 
 The design was synthesized and analyzed using a Multi-Corner flow with the **NanGate 45nm Open Cell Library** (ASIC Flow). The implementation was evaluated across two extreme corners:
  
-| Corner      | Timing Condition | Library Set | Voltage | Temperature |
-| ----------- | ---------------- | ----------- | ------- | ----------- |
-| Slow Corner | Max Delay        | slow_lib    | 0.95 V  | 125 °C      |
-| Fast Corner | Min Delay        | fast_lib    | 1.25 V  | 0 °C        |
+| Corner      | Timing Condition | Library Set | Process | Voltage | Temperature |
+| ----------- | ---------------- | ----------- | ------- | ------- | ----------- |
+| Slow Corner | Max Delay        | slow_lib    | SS      | 0.95 V  | 125 °C      |
+| Fast Corner | Min Delay        | fast_lib    | FF      | 1.25 V  | 0 °C        |
 
-Report summary:
+### Report summary:
+Critical Path:
+![RV32I_critical_path](./doc/rv32i_critical_path.svg)
+The figure shows the critical path of the design, which is an input-to-register path starting from the instruction memory input and passing through **Fetch -> Decode -> Control Unit -> ALU -> Program Counter register**. This is the main limitation of a single-cycle processor, since the entire instruction must complete within a single cycle, resulting to the clock period being constrained by the long combinational path. 
+
+QoR:
 
 | Analysis View | TNS (ps) | Critical Path Slack (ps) | Cell Area (µm²) | Leaf Instance Count |
 | ------------- | -------- | ------------------------ | --------------- | ------------------- |
-| Slow Corner   | 0.0      | 2.1                      | 99229.704       | 58738               |
-| Fast Corner   | 0.0      | 8365.4                   | 99229.704       | 58738               |
+| Slow Corner   | 0.0      | 3577.1                   | 93163.042       | 51180               |
+| Fast Corner   | 0.0      | 15076.7                  | 93163.042       | 51180               |
 
-Both corners met the timing constraint in synthesis. The Fast Corner shows significant slack margin, whereas the Slow Corner slack is much tighter, and is likely not to meet timing during the Place and Route (PnR) stage. Due to the absence of a specific SRAM macro in the NanGate 45nm library, all memories and the registers were synthesized using flip-flops standard cell. The high instance count ($58,738$) and large cell area are direct results of this. In a production-grade flow, replacing these with dedicated **SRAM Macros** would drastically reduce area and improve timing slack.
+Both corners met the timing constraint in synthesis. The Fast Corner shows significant slack margin, whereas the Slow Corner slack is much tighter. 
+
+Due to the absence of a specific SRAM macro in the NanGate 45nm library, all memories and the registers were synthesized using flip-flops standard cell. The high instance count ($51180$) and large cell area are direct results of this. In a production-grade flow, replacing these with dedicated **SRAM Macros** would drastically reduce area and cell count.
 ## Future Development
 - Transitioning to a 5-stage pipelined architecture to increase clock frequency and throughput.
 - Implementing forwarding paths and hazard detection logic.

@@ -24,6 +24,7 @@ module alu_b (
   always_comb begin
     // Set init value
     slt_true = 1'b0;
+    result = 32'hFFFFFFFF; 
     unique case (alu_op)
       ALU_ADD: result = op_a + op_b;
       ALU_SUB: result = op_a - op_b;
